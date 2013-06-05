@@ -1,0 +1,71 @@
+<div id="user-content">
+
+	<h1><%= @user.first_name+" "+@user.last_name %>
+	</h1> 
+	<div id="user-info">
+
+		<div>
+			<div class="field-desc">
+				Meno : 
+			</div>
+			<div class="field-cont">
+				<%= @user.first_name %>
+			</div>
+		</div>
+
+		<div>
+			<div class="field-desc">
+				Priezvisko : 
+			</div>
+			<div class="field-cont">
+				<%= @user.last_name %>
+			</div>
+		</div>
+
+		<div>
+			<div class="field-desc">
+				E-mail : 
+			</div>
+			<div class="field-cont">
+				<%= @user.email %>
+			</div>
+		</div>
+
+		<div>
+			<div class="field-desc">
+				Krajina : 
+			</div>
+			<div class="field-cont">
+				<%= @user.country %>
+			</div>
+		</div>
+
+		<div>
+			<div class="field-desc">
+				Kraj : 
+			</div>
+			<div class="field-cont">
+				<%= @user.region %>
+			</div>
+		</div>
+
+		<div>
+			<div class="field-desc">
+				Mesto : 
+			</div>
+			<div class="field-cont">
+				<%= @user.city %>
+			</div>
+		</div>
+
+		<div>
+			<div class="field-desc">
+				Popis : 
+			</div>
+			<div class="field-cont">
+				<%= @user.description %>
+			</div>
+		</div>
+
+	</div>
+</div>

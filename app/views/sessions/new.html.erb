@@ -1,0 +1,16 @@
+<center>
+	<h1>Prihlásenie</h1>
+
+<%= form_tag sessions_path do %>
+	<div class="form_field">
+  	<%= label_tag "email", "e-mail" %>
+  	<%= text_field_tag :email, params[:email] %>
+  </div>
+<div class="form_field">
+    <%= label_tag :password%>
+    <%= password_field_tag :password %>
+  </div>
+  <div class="form_submit"><%= submit_tag "Log in" %></div>
+<% end %>
+
+</center>

@@ -1,0 +1,40 @@
+<center>
+  <% if @user.errors.any? %>
+    <div id="error_div">
+      <h2>Formulár nemohol byť odoslaný</h2>
+        <% for message in @user.errors.full_messages %>
+          <%= message %><br>
+        <% end %>
+    </div>
+    <br>
+  <% end %>
+
+    <h1>Registrácia</h1>
+
+  <%= form_for @user, :url=> {:action =>"create"} do |f| %>
+    
+    <div class="form_field">
+      <%= f.label :email, "E-mail : " %>
+      <%= f.email_field :email %>
+      <br><span class="hint">e-mail bude následne používaný na prihlasovanie</span>
+    </div>
+    <div class="form_field">
+      <%= f.label :first_name, "Meno : " %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="form_field">
+      <%= f.label :last_name, "Priezvisko : " %>
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="form_field">
+      <%= f.label :password, "Heslo : " %>
+      <%= f.password_field :password %>
+      <br><span class="hint">heslo musí mať minimálne 8 znakov</span>
+    </div>
+    <div class="form_field">
+      <%= f.label :password_confirmation, "Heslo znovu : " %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="form_submit"><%= f.submit "Registrácia" %></div>
+  <% end %>
+</center>

@@ -1,0 +1,101 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.hint {
+	font-size: 13px;
+	color: red;
+	width: 350px;
+	display: inline-block;
+	padding: 5px;
+	text-align: center;
+}
+
+#user_navigation {
+	position: relative;
+	float :left;
+	border:1px dashed #666;
+	text-align: center;
+	padding:15px 0px 15px 0px;
+	margin: 0px 15px 0px 0px;
+	background-color: #eaeaea;
+	height: auto;
+	border-radius: 15px;
+	display: inline-block;
+	width: 20%;
+	min-width: 150px;
+
+	ul {
+		list-style-type: none;
+		padding: 0px;
+		margin: 0px;
+		li {
+			margin-top: 0px;
+			display:block;
+			padding:0px;
+			a {
+				display: block;
+				padding: 5px;
+				width: auto;
+				text-decoration: none;
+				color: black;
+			}
+			.active {
+				background-color: #CCC;
+			}
+
+			a:hover {
+				background-color: #c38731;
+			}
+		}
+	}
+}
+
+#user-content {
+	float:left;
+	display: inline-block;
+	height: auto;
+	margin: auto;
+	position: relative;
+	max-width: 70%;
+	width: 70%;
+}
+
+#user-info {
+	padding-left: 0px;
+	position: relative;
+}
+#user-info > div:nth-child(odd) {
+	background-color: #eaeaea;
+}
+
+.field-desc {
+	display: inline-block;
+	margin: 0px;
+	width: 30%;
+	text-align: right;
+	padding-right: 5px;
+	vertical-align: top;
+}
+
+.field-cont {
+	display: inline-block;
+	margin: 0px;
+	width: 65%;
+}
+
+.user_list {
+	position: relative;
+	a {
+		color:#000;
+		text-decoration: none;
+		display: inline-block;
+		width: 90%;
+		padding-left: 10%;
+		}
+	a:hover {
+		color: orange;
+		background-color: #293845;
+	}
+}

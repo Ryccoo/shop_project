@@ -1,8 +1,38 @@
-Eshop::Application.routes.draw do
+SchoolBlog::Application.routes.draw do
+  get "user_comments/index"
+  get "home/index"
+
+
+  #Facebook routes
+  match 'auth/:provider/callback', to: 'sessions#create_by_fb'
+  match 'auth/failure', to: redirect('/')
+
+  # Session routes
+  get "log_in" => "sessions#new", as:"log_in"
+  get "log_out" => "sessions#destroy", as:"log_out"
+  post "sessions" => "sessions#create"
+
+
+  root :to => "home#index"
+  get "user" => "users#user", as:"logged"
+  get "user/edit" => "users#edit", as:"logged/edit"
+  get "user/change-password" => "users#change_password", as:"logged/changepwd"
+  put "user/pwd" => "users#update_pass", as:"logged/update_pass"
+  get "sign_up" => "users#new", as:"sign_up"
+  put "users" => "users#update"
+
+  get "user/comments" => "user_comments#user_comments", as: "logged/comments"
+  resources :users do
+    resources :user_comments
+  end
+
+
+  # resources :sessions
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  # Sample of regular route:
+  # Sample of regular route:p4
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
 

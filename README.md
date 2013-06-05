@@ -1,4 +1,2 @@
-shop_project
-============
-
-Initial project, small eshop
+school_project
+==============

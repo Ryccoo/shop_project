@@ -1,0 +1,33 @@
+<%= render :partial => "users/menu" %>
+
+
+<div id="user-content">
+
+	<h1><%= @user.first_name+" "+@user.last_name %> - Komentáre
+	</h1> 
+	<div id="user-info">
+
+
+		<% @comments.each do |comment| %>
+		<% if comment.user_id==comment.author_id %>
+		<div class="user_list owned">
+		<% else %>
+		<div class="user_list">
+		<% end %>
+			<div>
+			<div class="field-desc" title="<%= "(UID: "+comment.author_id.to_s+")"  + " " + comment.created_at.to_s %>">
+				<%= comment.author %>  :
+			</div>
+			<div class="field-cont">
+				<%= comment.text.gsub(/\n/, '<br />').html_safe %>
+			</div>
+		</div>
+		</div>
+		<hr>
+		<% end %>
+
+	</div>
+	<% if have_right("user_comments_add") %>
+		<%= render "user_comments/form" %>
+	<% end %>
+</div>

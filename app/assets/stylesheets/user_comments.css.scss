@@ -1,0 +1,27 @@
+// Place all the styles related to the user_comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.owned {
+	background-color: #87a9c1 !important;
+}
+
+.comment_area {
+	padding: 10px;
+	textarea {
+		height: 75px;
+	}
+}
+
+.comment_submit {
+	input {
+		display:block;
+		margin:0px auto 0px auto;
+	}
+}
+
+.comment_form_div {
+	background-color: #f6f6f6;
+	border: 1px dashed #4d6e89;
+	margin-top: 80px;
+}

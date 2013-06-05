@@ -1,0 +1,34 @@
+<% if session[:user_id]==@user.id %>
+<div id="user_navigation">
+	<ul>
+		<li>
+			<%= link_to "Profil", logged_path, :class=>cp(logged_path) %>
+		</li>
+		<li>
+			<%= link_to "Komentáre", logged_comments_path, :class=>cp(logged_comments_path) %>
+		</li>
+		<li>
+			<%= link_to "Upraviť profil",  logged_edit_path, :class=>cp(logged_edit_path) %>
+		</li>
+		<% if session[:provider] != "facebook" %>
+		<li>
+			<%= link_to "Zmeniť heslo",  logged_changepwd_path, :class=>cp(logged_changepwd_path) %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% else %>
+<div id="user_navigation">
+	<ul>
+		<li>
+			<%= link_to "Profil", user_path(@user), :class=>cp(user_path(@user)) %>
+		</li>
+		<li>
+			<%= link_to "Zanechať komentár", user_user_comments_path(@user), :class=>cp(user_user_comments_path(@user)) %>
+		</li>
+		<li>
+			<%= link_to "Aktivita" %>
+		</li>
+	</ul>
+</div>
+<% end %>

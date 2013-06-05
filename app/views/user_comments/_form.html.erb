@@ -1,0 +1,14 @@
+<div class="comment_form_div">
+
+  <%= form_for([@user, @user.user_comments.build]) do |f| %>
+      <%= f.hidden_field :author, :value => session[:user_name]  %>
+      <%= f.hidden_field :author_id, :value => session[:user_id] %>
+    <div class="form_field comment_area">
+      <%= f.label :text , "Komentár" %>
+      <%= f.text_area :text %>
+    </div>
+    <div class="form_submit comment_submit">
+      <%= f.submit "Pridať komentár" %>
+    </div>
+  <% end %>
+</div>

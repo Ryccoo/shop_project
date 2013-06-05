@@ -1,0 +1,66 @@
+  <% if @user.errors.any? %>
+    <div id="error_div">
+      <h2>Formulár nemohol byť odoslaný</h2>
+        <% for message in @user.errors.full_messages %>
+          <%= message %><br>
+        <% end %>
+    </div>
+    <br>
+  <% end %>
+
+<%= render :partial => "menu" %>
+
+<%= form_for @user, :url=> {:action =>"update"} do |f| %>
+<div id="user-content">
+
+	<h1><%= @user.first_name+" "+@user.last_name %> - Upraviť profil
+	</h1> 
+	<div id="user-info">
+
+		<div class="form_field">
+      <%= f.label :first_name, "Meno : " %>
+      <%= f.text_field :first_name %>
+		</div>
+
+		<div class="form_field">
+      <%= f.label :last_name, "Priezvisko : " %>
+      <%= f.text_field :last_name %>
+		</div>
+
+		<div class="form_field">
+			<%= f.label :region, "Región : " %>
+			<select id="user_kraj" name="user[kraj]">
+			  <optgroup label="Slovenská republika">
+			  	<%
+			  	sk = ["Banskobystrický","Bratislavský","Košický","Nitriansky","Prešovský","Trenčiansky","Trnavský","Žilinský"]
+			  	sk.each do |kraj|
+			  	%>
+			  	<option value="SR^<%=kraj%>" <%= selected_region(kraj,@user.region) %>><%=kraj%></option>
+			  	<% end %>
+			  </optgroup>
+			  <optgroup label="Česká republika">
+					<%
+			  	cz = ["Hlavní město Praha","Jihočeský","Jihomoravský","Karlovarský","Královéhradecký","Liberecký","Moravskoslezský","Olomoucký","Pardubický","Plzeňský","Středočeský","Ústecký","Vysočina","Zlínský"]
+			  	cz.each do |kraj|
+			  	%>
+			  	<option value="CZ^<%=kraj%>" <%= selected_region(kraj,@user.region) %>><%=kraj%></option>
+			  	<% end %>
+			  </optgroup>
+			</select>
+		</div>
+
+
+		<div class="form_field">
+      <%= f.label :city, "Mesto : " %>
+      <%= f.text_field :city %>
+		</div>
+
+		<div class="form_field">
+      <%= f.label :description, "Popis : " %>
+      <%= f.text_area :description %>
+		</div>
+		<div class="form_submit"><%= f.submit "Uložiť" %></div>
+
+	</div>
+</div>
+<% end %>

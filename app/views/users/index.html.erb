@@ -1,0 +1,13 @@
+<div id="user-content">
+
+	<h1>Používatelia
+	</h1> 
+	<div id="user-info">
+		<% @users.each do |user| %>
+		<div class="user_list">
+			<%= link_to user.first_name+" "+user.last_name, user_path(user) %>
+		</div>
+		<hr>
+		<% end %>
+	</div>
+</div>
