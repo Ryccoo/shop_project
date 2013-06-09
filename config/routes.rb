@@ -21,7 +21,7 @@ SchoolBlog::Application.routes.draw do
 
   namespace :store do
     resources :categories do
-      resources :products
+      get ":id" => "products#display"
     end
   end
 

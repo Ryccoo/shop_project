@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607115534) do
+ActiveRecord::Schema.define(:version => 20130609224001) do
+
+  create_table "categories_products", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "product_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -32,6 +39,22 @@ ActiveRecord::Schema.define(:version => 20130607115534) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "store_categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "belongs_to"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "store_products", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "sold_count"
+    t.integer  "available_count"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "translations", :force => true do |t|
     t.text     "base"
     t.string   "location"
@@ -40,17 +63,6 @@ ActiveRecord::Schema.define(:version => 20130607115534) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "user_comments", :force => true do |t|
-    t.string   "author"
-    t.text     "text"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "author_id"
-  end
-
-  add_index "user_comments", ["user_id"], :name => "index_user_comments_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"
