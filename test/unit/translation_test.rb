@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserCommentTest < ActiveSupport::TestCase
+class TranslationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

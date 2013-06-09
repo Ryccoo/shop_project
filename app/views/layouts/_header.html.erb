@@ -1,33 +1,33 @@
 <header>
   <% if current_user %>
 	  <div class="log_out">
-	  	<%= link_to "Odhlásiť sa", log_out_path %>
+	  	<%= link_to Translation.make("log out",@translations), log_out_path %>
 		</div>
 		<% if current_user["provider"]=="WEB" %>
 			<div class="name">
-				<%= link_to "Zmeniť heslo",  logged_changepwd_path, :class=>cp(logged_changepwd_path) %>
+				<%= link_to Translation.make("change password",@translations),  logged_changepwd_path, :class=>cp(logged_changepwd_path) %>
 			</div>
 		<% end %>
 		<div class="name">
-			<%= link_to current_user["user_name"], logged_path %>
+			<%= link_to current_user["user_name"], user_path(current_user["user_id"]) %>
 		</div>
 
 	<% else %>
 
-		<div class="log_out">
-	  	<%= link_to "Facebook", "/auth/facebook" %>
+		<div class="facebook">
+	  	<%= link_to image_tag("facebook_icon.png", :class => "facebook_icon"), "/auth/facebook" %>
 		</div>
 		<div class="log_out">
-	  	<%= link_to "Prihlásiť sa", log_in_path %>
+	  	<%= link_to Translation.make("log in",@translations), log_in_path %>
 		</div>
 		<div class="log_out">
-	  	<%= link_to "Registrácia", sign_up_path %>
+	  	<%= link_to Translation.make("register",@translations), sign_up_path %>
 		</div>
 
   <% end %>
 
   <div class="home">
-		<%= link_to "Hlavná stránka", root_path %>
+		<%= link_to Translation.make("home_page",@translations), root_path %>
 	</div>
 <!--   <div class="home">
 		<%= link_to "Používatelia", users_path %>

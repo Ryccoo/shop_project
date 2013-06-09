@@ -1,6 +1,10 @@
+<% content_for :title do %>
+	<%= @user.full_name %>
+<% end %>
+
 <div id="user-content">
 
-	<h1><%= @user.first_name+" "+@user.last_name %>
+	<h1><%= @user.full_name %>
 	</h1> 
 	<div id="user-info">
 

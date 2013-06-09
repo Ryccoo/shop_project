@@ -65,7 +65,7 @@ class UsersController < ApplicationController
       proceed = User.authenticate(@user.email, params[:user][:old_password])
       if proceed
         if @user.update_attributes(params[:user])
-          redirect_to logged_path, :notice => "Heslo bolo zmenené"
+          redirect_to user_path(current_user["user_id"]), :notice => "Heslo bolo zmenené"
         else
           render "change_password"
         end
@@ -81,7 +81,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.find(:all, :order => 'last_name, first_name')
+    result = User.find(:all, :order => 'last_name, first_name')
+    @users = Kaminari.paginate_array(result).page(params[:page]).per(10)
   end
 
 end

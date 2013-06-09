@@ -1,5 +1,10 @@
 # maintainer: Ivan Stana <stiipa@centrum.sk>
 sk:
+  views:  
+    pagination:  
+      previous: "&lt; Previous"  
+      next: "Next &gt;"
+      truncate: "..."
   date:
     abbr_day_names:
     - Ne

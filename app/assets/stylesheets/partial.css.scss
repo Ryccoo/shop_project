@@ -24,6 +24,24 @@ header div.log_out {
 	border-left: 2px solid #333;
 }
 
+header div.facebook {
+	float: right;
+	/*border-left: 2px solid #333;*/
+	padding: 0px;
+
+	a {
+		padding: 4px 10px 1px 10px;
+	}
+}
+
+.facebook_icon {
+	border:0px;
+	width: auto;
+	height: 30px;
+	margin: 0px;
+	padding: 0px;
+}
+
 header a {
 	color:#FFFFFF;
 	display: block;
@@ -66,7 +84,7 @@ footer {
 		color:#FFF;
 		vertical-align: middle;
 		height: auto;
-		width: 200px;
+		width: 250px;
 		vertical-align: bottom;
 		position: relative;
 		margin-top: 15px;
@@ -74,3 +92,4 @@ footer {
 		margin-right: auto;
 	}
 }
+

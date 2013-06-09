@@ -1,8 +1,6 @@
 # encoding: UTF-8
 class User < ActiveRecord::Base
 
-  has_many  :user_comments, :dependent => :destroy
-
   attr_accessor :password, :kraj, :old_password, :pass_change
   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :kraj, :city, :description, :old_password, :pass_change
   validates :email,       :presence => :true,
@@ -18,7 +16,10 @@ class User < ActiveRecord::Base
   
   validates :last_name,   :presence => :true
 
+  before_validation :downcase_email
+
   before_save do |model|
+    self.email = self.email.downcase
     encrypt_password
     set_country
     if pass_change
@@ -68,7 +69,7 @@ class User < ActiveRecord::Base
   def self.authenticate(email, password)
   	user = User.find_by_email(email)
 
-  	if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+  	if user && user.provider="WEB" && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
   		return user
   	else
   		return nil
@@ -87,7 +88,15 @@ class User < ActiveRecord::Base
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.password_salt = BCrypt::Engine.generate_salt
       user.save!
+    end
   end
-end
+
+  def downcase_email
+    self.email = self.email.downcase if self.email.present?
+  end
+
+  def full_name
+    self.first_name+" "+self.last_name
+  end
 
 end

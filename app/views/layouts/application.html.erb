@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SchoolBlog</title>
+  <title>
+  	<% title = "Eshop => " %>
+  	<% title += yield :title %>
+  	<%= title %>
+  </title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -10,7 +14,6 @@
 
 
 <%= render :partial=>"layouts/header" %>
-
 
 <div id="wrapper">
 <%= yield %>

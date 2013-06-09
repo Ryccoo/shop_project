@@ -1,7 +1,7 @@
 <div id="user-content">
-
 	<h1>Používatelia
 	</h1> 
+ <%= paginate @users %>
 	<div id="user-info">
 		<% @users.each do |user| %>
 		<div class="user_list">
