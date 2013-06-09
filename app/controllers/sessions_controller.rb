@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
     if session[:user_id]
       redirect_to root_url, :alert => "Užívateľ je už prihlásený"
     end
+    @translations = Translation.get("sessions/new","en")
 	end
 
 	def create

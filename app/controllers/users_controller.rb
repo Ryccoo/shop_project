@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       redirect_to root_url, :alert => "Pred vytvorením nového užívateľa sa prosím odhláste"
     else
   	 @user = User.new
+     @translations = Translation.get("users/new", "en")
     end
   end
 

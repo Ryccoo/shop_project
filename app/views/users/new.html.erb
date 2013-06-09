@@ -1,7 +1,7 @@
 <center>
   <% if @user.errors.any? %>
     <div id="error_div">
-      <h2>Formulár nemohol byť odoslaný</h2>
+      <h2><%= Translation.make("Form can not be sent !", @translations, "users/new") %></h2>
         <% for message in @user.errors.full_messages %>
           <%= message %><br>
         <% end %>
@@ -14,27 +14,27 @@
   <%= form_for @user, :url=> {:action =>"create"} do |f| %>
     
     <div class="form_field">
-      <%= f.label :email, "E-mail : " %>
+      <%= f.label :email, Translation.make("e-mail", @translations, "users/new")+" : " %>
       <%= f.email_field :email %>
-      <br><span class="hint">e-mail bude následne používaný na prihlasovanie</span>
+      <br><span class="hint"><%= Translation.make("E-mail will be used for loggin in.", @translations, "users/new") %></span>
     </div>
     <div class="form_field">
-      <%= f.label :first_name, "Meno : " %>
+      <%= f.label :first_name, Translation.make("First name", @translations, "users/new")+" : " %>
       <%= f.text_field :first_name %>
     </div>
     <div class="form_field">
-      <%= f.label :last_name, "Priezvisko : " %>
+      <%= f.label :last_name, Translation.make("Last name" , @translations, "users/new")+" : " %>
       <%= f.text_field :last_name %>
     </div>
     <div class="form_field">
-      <%= f.label :password, "Heslo : " %>
+      <%= f.label :password, Translation.make("Password", @translations, "users/new")+" : " %>
       <%= f.password_field :password %>
-      <br><span class="hint">heslo musí mať minimálne 8 znakov</span>
+      <br><span class="hint"><%= Translation.make("Password must be at least 8 characters long", @translations, "users/new") %></span>
     </div>
     <div class="form_field">
-      <%= f.label :password_confirmation, "Heslo znovu : " %>
+      <%= f.label :password_confirmation, Translation.make("Password again", @translations, "users/new")+" : " %>
       <%= f.password_field :password_confirmation %>
     </div>
-    <div class="form_submit"><%= f.submit "Registrácia" %></div>
+    <div class="form_submit"><%= f.submit Translation.make("Register", @translations, "users/new") %></div>
   <% end %>
 </center>

@@ -15,9 +15,9 @@ class Translation < ActiveRecord::Base
   end
 
   def self.make(word,records,location="all")
-    puts "--------------------------"
-    puts records
-    puts "--------------------------"
+    # puts "--------------------------"
+    # puts records
+    # puts "--------------------------"
     unless records.has_key?(word.downcase)
       new_word=Translation.new
       new_word.base = word
