@@ -1,37 +1,29 @@
 # encoding: UTF-8
 class UsersController < ApplicationController
   
-  def user
-    unless current_user
-      redirect_to root_url, :alert => "Nie ste prihlásený"
-    else
-      @user = User.find(current_user["user_id"]);
-    end
-
-  end
-
-
   def new
+    @translations = Translation.get("users/new", "en")
     if current_user
-      redirect_to root_url, :alert => "Pred vytvorením nového užívateľa sa prosím odhláste"
+      redirect_to root_url, :alert => Translation.make("Log out before creating new account",@translations)
     else
   	 @user = User.new
-     @translations = Translation.get("users/new", "en")
     end
   end
 
   def create
+    @translations = Translation.get("users/new", "en")
   	@user = User.new(params[:user])
   	if @user.save
-  		redirect_to root_url, :notice => "Registrácia prebehla úspešne."
+  		redirect_to root_url, :notice => Translation.make("Registration sucessful",@translations)
   	else 
   		render "new"
   	end
   end
 
   def edit
+    @translations = Translation.get("users/new", "en")
     unless current_user
-      redirect_to root_url, :alert => "Nie ste prihlásený"
+      redirect_to root_url, :alert => Translation.make("Not logged in",@translations)
     else
       @user = User.find(current_user["user_id"]);
     end
@@ -40,38 +32,40 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user["user_id"]);
     if @user.update_attributes(params[:user])
-      redirect_to logged_path, :notice => "Profil bol upravený"
+      redirect_to logged_path, :notice => Translation.make("Profile sucessfully edited",@translations)
     else
       render "edit"
     end
   end
 
   def change_password
+    @translations = Translation.get("users/new", "en")
     unless current_user["user_id"]
-      redirect_to root_url, :alert => "Nie ste prihlásený"
+      redirect_to root_url, :alert => Translation.make("Not logged in",@translations)
     else
       if current_user["provider"] == "WEB"
         @user = User.find(current_user["user_id"]);
       else
-        redirect_to root_url, :alert => "Táto akcia nie je možná"
+        redirect_to root_url, :alert => Translation.make("Action impossible",@translations)
       end
     end
   end
 
   def update_pass
+    @translations = Translation.get("users/new", "en")
     unless current_user["user_id"]
-      redirect_to root_url, :notice => "Nie ste prihlásený"
+      redirect_to root_url, :notice => Translation.make("Not logged in",@translations)
     else
       @user = User.find(current_user["user_id"]);
       proceed = User.authenticate(@user.email, params[:user][:old_password])
       if proceed
         if @user.update_attributes(params[:user])
-          redirect_to user_path(current_user["user_id"]), :notice => "Heslo bolo zmenené"
+          redirect_to user_path(current_user["user_id"]), :notice => Translation.make("Password changed",@translations)
         else
           render "change_password"
         end
       else
-        redirect_to logged_changepwd_path, :alert => "Zlé heslo"
+        redirect_to logged_changepwd_path, :alert => Translation.make("Wrong password",@translations)
       end
     end
   end

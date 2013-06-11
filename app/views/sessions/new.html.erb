@@ -3,11 +3,11 @@
 
 <%= form_tag sessions_path do %>
 	<div class="form_field">
-  	<%= label_tag "email", Translation.make("e-mail", @translations, "sessions/new") %>
+  	<%= label_tag "email", Translation.make("e-mail", @translations) %>
   	<%= text_field_tag :email, params[:email] %>
   </div>
 <div class="form_field">
-    <%= label_tag "password", Translation.make("password", @translations, "sessions/new") %>
+    <%= label_tag "password", Translation.make("password", @translations) %>
     <%= password_field_tag :password %>
   </div>
   <div class="form_submit"><%= submit_tag "Log in" %></div>

@@ -2,11 +2,17 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user, :have_right
   before_filter :set_start_time, :get_translations
-
   private
+
+  def app_lang
+    @app_lang = session[:lang]
+    @app_lang ||= "en"
+  end
+
   def get_translations
     @translations = Translation.get("all","en") 
   end
+
 	def current_user
     @current_user ||= session[:user] if session[:user]
   end
