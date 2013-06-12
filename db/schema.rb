@@ -51,6 +51,9 @@ ActiveRecord::Schema.define(:version => 20130609224001) do
     t.text     "description"
     t.integer  "sold_count"
     t.integer  "available_count"
+    t.integer  "price"
+    t.integer  "price_DPH"
+    t.string   "price_comment"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

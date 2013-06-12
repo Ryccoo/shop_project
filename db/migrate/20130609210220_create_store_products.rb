@@ -5,6 +5,9 @@ class CreateStoreProducts < ActiveRecord::Migration
       t.text :description
       t.integer :sold_count
       t.integer :available_count
+      t.integer :price
+      t.integer :price_DPH
+      t.string :price_comment
 
       t.timestamps
     end

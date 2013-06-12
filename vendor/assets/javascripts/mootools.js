@@ -33,6 +33,7 @@ provides: [Core, MooTools, Type, typeOf, instanceOf, Native]
 ...
 */
 
+
 (function(){
 
 this.MooTools = {

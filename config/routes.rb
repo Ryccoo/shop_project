@@ -1,5 +1,6 @@
 SchoolBlog::Application.routes.draw do
 
+
   root :to => "home#index"
 
   #Facebook routes
@@ -20,11 +21,12 @@ SchoolBlog::Application.routes.draw do
   resources :users
 
   namespace :store do
+    get "/" => "home#index", as:"store_home"
     resources :categories do
       get ":id" => "products#display"
     end
   end
-
+  get "images/index" => "images#index"
 
   # resources :sessions
 
